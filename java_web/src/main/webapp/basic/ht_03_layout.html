@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ht_03_layout.html</title>
+	
+	<style>
+		@import url("base.css");
+		
+		li[title~="무료배송"]::after {
+			content: "[무료배송]";
+		}
+		
+		li[title~="hot"]{
+			color : red;
+		}
+		
+		li[title~="품절"]{
+			color : grey;
+		}
+	</style>
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body>
+	<div style="width: 1024px; margin:0 auto; border:1px solid navy;">
+		<div class="header">
+			<h3>Header</h3>
+		</div>
+		<div class="middle">
+			<div class="menu"><h3>Menu</h3></div>
+			<div class="content">
+				<h3>Content</h3>
+				<h4 id="msg"></h4>
+				<ul>
+					<li title ="무료배송">상품1</li>
+					<li title ="품절">상품2</li>
+					<li title ="hot 무료배송">상품3</li>
+					<li title ="품절">상품4</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer">
+			<h3>Footer</h3>
+		</div>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			//alert('Hello')
+		});	/*document 객체가 완성되면 이 코드를 실행해라*/
+			/* callback 함수는 코드를 넘기기 위해서 사용한다*/
+			
+		//Ajax(Asynchronous JavaScript and XML)
+		//XMLHttpRequest
+		let result = '';
+		$.get('msg.json', function(data){
+			result = data;
+			console.log('1', result);
+		});
+		console.log('2', result);
+		
+		// promise design pattern
+		let result2 = '';
+		$.get('msg.json', {name:'홍길동'},function(){
+			console.log('응답 대기중');
+		})
+		.then(function(data){ //서버에서 응답이 오면 실행
+			result2 = data;
+			console.log('3', result2);
+		})
+		.then(function(){
+			console.log('4', result2);
+			$('#msg').text(result2.text);
+		});
+		
+		$('li[title~="품절"]').on('click',function(){
+			alert('품절 입니다.');
+		});
+		
+	</script>
+</body>
+</html>	

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ht_02_flot.html</title>
+	<style>
+		.clearfix::after {
+			content :"";
+			display:table;
+			clear:both;
+		}
+		
+		.floating {
+			float:left;
+			border: 0px solid #ddd;
+			margin-right: 3px;
+			padding:2px;
+		}
+		.floating:hover {
+			background-color: yellow;
+			cursor: pointer;
+		}
+		.floating::after {
+			content: " | "
+		}
+		
+		.box {
+			width: 100px;
+			height: 50px;
+			border: 1px solid #ddd;
+		}
+		
+		.row {
+			display: inline-block;
+		}
+		
+		.container {
+			display: flex;
+			border: 1px solid #ddd;
+		}
+		
+		.item {
+			border: 1px solid #ddd;
+		}
+		
+		.column {
+			flex-direction: column-reverse;
+		}
+		
+	</style>
+</head>
+<body>
+	<h3>float</h3>
+	<div class="clearfix">
+		<img src="pome02.jpg" style="width:150px; height:150px; float:left";>
+		<div>float는 '띄우다' 라는 의미가 있습니다.</div>
+	</div>
+	
+	<h3>float div</h3>
+	<div class="clearfix">
+		<div class="floating">플로팅 레이아웃</div>
+		<div class="floating">플로팅 레이아웃</div>
+		<div class="floating">플로팅 레이아웃</div>
+	</div>
+	
+	<h3>box model</h3>
+	<div>
+		<div class="box row">플로팅 레이아웃</div>
+		<div class="box row">플로팅 레이아웃</div>
+		<div class="box row">플로팅 레이아웃</div>
+	</div>
+	<div>
+		<span class="box">플로팅 레이아웃</span>
+		<span class="box">플로팅 레이아웃</span>
+		<span class="box">플로팅 레이아웃</span>
+	</div>
+
+	<h3>flex</h3>
+	<div class="container column">
+		<div class="item">플로팅 레이아웃1</div>
+		<div class="item">플로팅 레이아웃2</div>
+		<div class="item">플로팅 레이아웃3</div>
+	</div>
+
+</body>
+</html>	
